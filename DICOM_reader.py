@@ -90,91 +90,19 @@ def make_ndarrays_from_folders(parent, target, cond="", time="", cropped=False):
 
 
 if __name__ == "__main__":
-    # mainfolder = r"G:\OneDrive - Universitetet i Oslo\Pilot_LateEffects_-7day"
-    # parent = r"G:\OneDrive - Universitetet i Oslo\Pilot_LateEffects_-7day"
-    # target = r"G:\OneDrive - Universitetet i Oslo\Segmentations\cropped_salivary\raw"
-
-    # time = "-7day"
-    # time = "8day"
     time = "071220" #change this to correct day - 57day???
     main = os.path.normpath(os.path.join(os.getcwd(), "..", "RAW DATA\Pilot1\MRI", time))
     plane = "sagittal"
-    # plane = "transverse"
-    # make_ndarrays_from_folders(parent, target, cond="sagittal", time="-7day", cropped=True)
-    # for folder in find_folders(main, plane):
-    #     path = os.path.normpath(os.path.join(main, folder))
-    #     print(path)
-    #     # for file in dcm_files_indexed(path):
-    #     #     print(file)
-    #         # if folder == "C2_sagittal" and file[0] == "MRIm11.dcm":
-    #         #     print(folder, file[0])
-    #         #     filepath = os.path.join(main, folder, file[0])
-    #         #     ds = pydicom.dcmread(filepath)
-    #         #     print(ds)
-    #     dcm0 = dcm_files_indexed(path, printbool=False)[0][0];   dcm1 = dcm_files_indexed(path, printbool=False)[1][0]
-    #     ds0 = pydicom.dcmread(os.path.join(main, folder, dcm0));   ds1 = pydicom.dcmread(os.path.join(main, folder, dcm1))
-    #     print(ds1.SliceLocation - ds0.SliceLocation, ds0.SliceThickness)
-    #     print(ds0.PixelSpacing, ds0.ImageOrientationPatient)
-        # print(ds0.ImagePositionPatient)
+
 
     #PILOT 2 DCM STUFF
     main = os.path.join(os.getcwd(), "..", "RAW DATA\Pilot2")
     for time in os.listdir(main):
         print("\n", time)
         for mouse in find_folders(os.path.join(main, time), condition="sagittal"):
-            name = (mouse[12:15] + mouse[15:24]).replace("_", " ") if "p" in mouse else mouse[12:15]    #how to collect individual name (with MRI timing according to pilocarpine injection)
+            name = (mouse[12:15] + mouse[15:24]).replace("_", " ") if "p" in mouse else mouse[12:15]
+
+            #how to collect individual name (with MRI timing according to pilocarpine injection)
             dcmfiles = dcm_files_indexed(os.path.join(main, time, mouse), printbool=False)
             print(len(dcmfiles), name)
 
-            # print(mouse[12:15])
-                # print(p)
-                # idx = 0
-                # print(len(dcmfiles), p)
-
-                # ds = pydicom.dcmread(os.path.join(main, time, mouse, dcmfiles[idx][0]))
-                # print(ds.ImageOrientationPatient, len(dcmfiles), mouse)
-                # if ds.ImageOrientationPatient == [0, 1, 0, 0, 0, -1]:
-                # if ds.ImageOrientationPatient == [0, 1, 0, 0, 0, -1] and not mouse == "210315_Olga_4-1__E2_P1":
-                # print(ds.ImageOrientationPatient, len(dcmfiles), mouse)
-                    # p = os.path.join(main, time, mouse)
-                    # os.rename(p, p + "_all_planes")
-    #                 idx = 14
-    #                 ds = pydicom.dcmread(os.path.join(main, time, mouse, dcmfiles[idx][0]))
-    #                 fig, ax = plt.subplots()
-    #                 ax.imshow(ds.pixel_array, cmap="gray")
-    #                 ax.set_title(mouse)
-    # plt.show()
-# p = r"C:\Users\toral\OneDrive - Universitetet i Oslo\RAW DATA\Pilot2\-7day\210315_Olga_1-1__E1_P1"
-# os.rename(p, p+"_sagittal")
-
-    # for file in indexed_files:
-    #     ds = pydicom.dcmread(path + r"\\" + file[0])
-    #     print(file[0], ds.SpacingBetweenSlices) #ds.MagneticFieldStrength)
-
-    #ds.SpacingBetweenSlices - distance from center to center of slices
-
-    # image_num = 20
-    # ds = pydicom.dcmread(path + r"\\" + indexed_files[image_num][0])
-    # print((ds))
-    # print("slice spacing =", ds.SpacingBetweenSlices, "slice thickness = ", ds.SliceThickness)
-    # print(ds.NumberOfPhaseEncodingSteps)
-# for file in indexed_files:
-#     with pydicom.read_file(path + file[0]) as ds:
-#         print(ds.ImagePositionPatient)
-
-
-# files = os.listdir(path)    #get files in path as list of strings
-# for f in indexed_files: print(f)
-# print("shape of indexed_files =", np.shape(indexed_files))
-
-
-# print("image [0] = ", ds)
-# plt.imshow(ds.pixel_array, cmap=plt.cm.bone);
-# print(indexed_files[image_num])
-# plt.title("Image: {}, SliceLoc = {}".format(*indexed_files[image_num]))
-# plt.show()
-
-
-#fs = FileSet(path_mouseIR)
-# for file in dirs:
-#     print(file)

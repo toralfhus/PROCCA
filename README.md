@@ -1,2 +1,5 @@
 # PROCCA
-Simple segmentation of submandibular gland in mice from T2 weighted MR images, radiomic feature extraction, selection and model building.
+Code relating to master thesis: MRI based radiomics to predict radiation-induced effects in mouse salivary glands.
+
+Semi-automatic segmentation of submandibular glands / sublingual glands in mice from T2 or T1 weighted MRI.
+Radiomic feature extraction using pyradiomics, feature selection and model building for prediction.
